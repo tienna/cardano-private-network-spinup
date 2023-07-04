@@ -5,9 +5,7 @@
 For folder structure, we will use the guild operator scripts.
 
 mkdir "$HOME/tmp";cd "$HOME/tmp"
-# Install curl
-# CentOS / RedHat - sudo dnf -y install curl
-# Ubuntu / Debian - sudo apt -y install curl
+
 curl -sS -o guild-deploy.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/guild-deploy.sh
 chmod 755 guild-deploy.sh
 
@@ -16,7 +14,7 @@ For cardano-node, we will use the latest pre-built binaries available which can 
 ./guild-deploy.sh -s d
 
 # Update node producer pool name 
-Before you go ahead with starting your node, you may want to update values for POOL_NAME in $CNODE_HOME/scripts/env.
+Before you go ahead with starting your node, update value for POOL_NAME in $CNODE_HOME/scripts/env.
 
 POOL_NAME="pool1"
 
@@ -49,15 +47,16 @@ Every execution of update-genesis-start-time.sh will generate a unique genesis f
 
 This will also copy the config files and the keys to run the cardano node.
 
-#### Deploying private instance
+## Deploying private instance
 
 1. Deploy as a systemd service
 Execute the below command to deploy your node as a systemd service (from the respective scripts folder):
 
 cd $CNODE_HOME/scripts
 ./cnode.sh -d
-# Deploying cnode.service as systemd service..
-# cnode.service deployed successfully!!
+
+Deploying cnode.service as systemd service..
+cnode.service deployed successfully!!
 
 2. Start the service
 Run below commands to enable automatic start of service on startup and start it.
@@ -69,12 +68,12 @@ sudo systemctl start cnode.service
 sudo systemctl status cnode.service
 
 
-Important
+#### Important
 
 In case you see the node exit unsuccessfully upon checking status, please verify you've followed the transition process correctly as documented below, and that you do not have another instance of node already running. It would help to check your system logs (/var/log/syslog for debian-based and /var/log/messages for Red Hat/CentOS/Fedora systems, you can also check journalctl -f -u <service> to examine startup attempt for services) for any errors while starting node.
 
 
-#### Next steps:
+## Next steps:
 
 You can use gLiveView to monitor your node that was started as a systemd service.
 
