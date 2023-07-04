@@ -7,6 +7,7 @@ For folder structure, we will use the guild operator scripts.
 mkdir "$HOME/tmp";cd "$HOME/tmp"
 
 curl -sS -o guild-deploy.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/guild-deploy.sh
+
 chmod 755 guild-deploy.sh
 
 For cardano-node, we will use the latest pre-built binaries available which can be downloaded automatically in the ~/.local/bin directory.
