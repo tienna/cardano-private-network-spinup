@@ -89,3 +89,16 @@ You can use gLiveView to monitor your node that was started as a systemd service
 cd $CNODE_HOME/scripts
 ./gLiveView.sh
 ```
+
+## Generate Addresses and fund:
+
+```bash
+cd scripts
+./step1-generate-utxo-keys-and-address.sh
+```
+
+Send funds to the address from the bootstrap node:
+```bash
+cd scripts
+./faucet.sh <AMOUNT_IN_LOVELACE> <ADDRESS>
+```

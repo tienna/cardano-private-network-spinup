@@ -4,9 +4,9 @@ set -euo pipefail
 
 # Remove previously generated keys and files and db files
 
-rm -rf /opt/cardano/cnode/db/*
-rm -rf /opt/cardano/cnode/sockets/*
-rm -rf /opt/cardano/cnode/files/*
+rm -rf $CNODE_HOME/db/*
+rm -rf $CNODE_HOME/sockets/*
+rm -rf $CNODE_HOME/files/*
 
 
 # Create the genesis files and configs for the network, and the various keys that the nodes use.
@@ -39,8 +39,9 @@ RETURN_ADDRESS=$(cat keys/utxo-keys/utxo1_stk.addr)
 
 # Create keys file
 
-mkdir -p /opt/cardano/cnode/keys/
-mkdir -p /opt/cardano/cnode/priv/pool/$POOL_NAME
+mkdir -p $CNODE_HOME/generated-keys/
+mkdir -p $CNODE_HOME/initial-keys/
+mkdir -p $CNODE_HOME/priv/pool/$POOL_NAME
 
 
 
@@ -51,21 +52,21 @@ sed -i "s/\"protocolMagic\": [0-9]*/\"protocolMagic\": $NETWORK_MAGIC/" "templat
 sed -i "s/\"networkMagic\": [0-9]*/\"networkMagic\": $NETWORK_MAGIC/" "templates/genesis-shelley.json" 
 
 
-cp templates/genesis-byron.json /opt/cardano/cnode/files/byron-genesis.json
-cp templates/genesis-shelley.json /opt/cardano/cnode/files/shelley-genesis.json
-cp templates/genesis-alonzo.json /opt/cardano/cnode/files/alonzo-genesis.json
-cp templates/conway-genesis.json /opt/cardano/cnode/files/conway-genesis.json
+cp templates/genesis-byron.json $CNODE_HOME/files/byron-genesis.json
+cp templates/genesis-shelley.json $CNODE_HOME/files/shelley-genesis.json
+cp templates/genesis-alonzo.json $CNODE_HOME/files/alonzo-genesis.json
+cp templates/conway-genesis.json $CNODE_HOME/files/conway-genesis.json
 
-cp templates/cardano-node.json /opt/cardano/cnode/files/config.json
+cp templates/cardano-node.json $CNODE_HOME/files/config.json
 
-cp templates/topology.json /opt/cardano/cnode/files/topology.json
+cp templates/topology.json $CNODE_HOME/files/topology.json
 
 
-cp keys/node-keys/kes.skey /opt/cardano/cnode/priv/pool/$POOL_NAME/hot.skey
-cp keys/node-keys/vrf.skey /opt/cardano/cnode/priv/pool/$POOL_NAME/vrf.skey
-cp keys/node-keys/opcert.cert /opt/cardano/cnode/priv/pool/$POOL_NAME/op.cert
+cp keys/node-keys/kes.skey $CNODE_HOME/priv/pool/$POOL_NAME/hot.skey
+cp keys/node-keys/vrf.skey $CNODE_HOME/priv/pool/$POOL_NAME/vrf.skey
+cp keys/node-keys/opcert.cert $CNODE_HOME/priv/pool/$POOL_NAME/op.cert
 
-sudo chmod o-rwx /opt/cardano/cnode/priv/pool/$POOL_NAME/vrf.skey
-sudo chmod g-rwx /opt/cardano/cnode/priv/pool/$POOL_NAME/vrf.skey
+sudo chmod o-rwx $CNODE_HOME/priv/pool/$POOL_NAME/vrf.skey
+sudo chmod g-rwx $CNODE_HOME/priv/pool/$POOL_NAME/vrf.skey
 
-cp -r keys/utxo-keys /opt/cardano/cnode/
+cp -r keys/utxo-keys/* $CNODE_HOME/initial-keys
