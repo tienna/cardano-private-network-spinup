@@ -13,12 +13,12 @@ For cardano-node, we will use the latest pre-built binaries available which can 
 
 ./guild-deploy.sh -s d
 
-# Update node producer pool name 
+## Update node producer pool name 
 Before you go ahead with starting your node, update value for POOL_NAME in $CNODE_HOME/scripts/env.
 
 POOL_NAME="pool1"
 
-# Source the changes
+## Source the changes
 
 . "${HOME}/.bashrc"
 
