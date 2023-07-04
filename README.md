@@ -102,3 +102,12 @@ Send funds to the address from the bootstrap node:
 cd scripts
 ./faucet.sh <AMOUNT_IN_LOVELACE> <ADDRESS>
 ```
+
+## Running a Relay:
+
+To run a relay node, the config file generated for the block producer node will be used. The topology file for the relay node has to be updated to connect to the block producer node.
+For setup, 
+1. start with same pre-requisites but do not set the pool name for this instance
+2. Copy the genesis files from the block producer for relay node
+3. Update topology file to be able to connect to the block producer node
+4. Run relay node as systemd service and let it sync up.
