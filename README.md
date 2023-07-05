@@ -111,3 +111,23 @@ For setup,
 2. Copy the genesis files from the block producer for relay node
 3. Update topology file to be able to connect to the block producer node
 4. Run relay node as systemd service and let it sync up.
+
+### Running grafana on relay node for monitoring 
+Once your Cardano pool is successfully set up, then comes the most beautiful part - setting up your Dashboard and Alerts!
+
+    https://developers.cardano.org/docs/operate-a-stake-pool/grafana-dashboard-tutorial/
+
+## Runing Cardano db-sync
+
+### Prerequisites
+
+Ensure the older database is dropped and there is no data from previous run network.
+Set up the postgres for the db sync (https://cardano-community.github.io/guild-operators/Appendix/postgres/)
+
+
+### Setting up db-sybc as systemd service
+
+The db-sync can be easily set using guild operator scripts
+(https://cardano-community.github.io/guild-operators/Build/dbsync/)
+
+USeful Queries - https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md 
