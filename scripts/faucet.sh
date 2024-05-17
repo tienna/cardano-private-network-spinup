@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
+export CNODE_HOME=/opt/cardano/cnode
 cd $CNODE_HOME
 mkdir -p output
 
 SEND_ADDR=$2
 FAUCET_AMOUNT=$1
 PAYMENT_KEY_PREFIX=$CNODE_HOME/initial-keys
-CARDANO_NODE_SOCKET_PATH=$CNODE_HOME/sockets/node0.socket
+CARDANO_NODE_SOCKET_PATH=$CNODE_HOME/sockets/node.socket
 export CARDANO_NODE_SOCKET_PATH
 
 ADDR=$(cat $CNODE_HOME/initial-keys/utxo1.addr)
