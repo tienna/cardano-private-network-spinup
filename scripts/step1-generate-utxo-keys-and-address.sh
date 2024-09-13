@@ -55,7 +55,7 @@ ${BLUE}$(cat $UTXO_KEYS_PATH/payment.addr)${NC}
 ${GREEN}Next, request funds to be sent to this address from the bootstrap node.${NC}
 
 ${GREEN}Then check your utxo balance:${NC}
-${GREEN}export CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH{NC}
+${GREEN}export CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH${NC}
 ${BLUE}cardano-cli query utxo --address $(cat $UTXO_KEYS_PATH/payment.addr) --testnet-magic $NETWORK_MAGIC${NC}\n
            
 EOF
