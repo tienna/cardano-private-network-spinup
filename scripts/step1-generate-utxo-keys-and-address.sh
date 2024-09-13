@@ -18,7 +18,7 @@ mkdir -p $TMP_PATH
 
 
 export PATH="~/bin:$PATH"
-export CARDANO_NODE_SOCKET_PATH=$CNODE_HOME/sockets/node0.socket
+export CARDANO_NODE_SOCKET_PATH=$CNODE_HOME/sockets/node.socket
 
 if [ "$(ls -A $UTXO_KEYS_PATH)" ]; then	
     echo -e "\n${RED}abort ... $UTXO_KEYS_PATH is not an empty directory and your keys would get overwritten${NC}\n"
@@ -55,7 +55,7 @@ ${BLUE}$(cat $UTXO_KEYS_PATH/payment.addr)${NC}
 ${GREEN}Next, request funds to be sent to this address from the bootstrap node.${NC}
 
 ${GREEN}Then check your utxo balance:${NC}
-${GREEN}export CARDANO_NODE_SOCKET_PATH=~/cnode/sockets/node.socket${NC}
+${GREEN}export CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH{NC}
 ${BLUE}cardano-cli query utxo --address $(cat $UTXO_KEYS_PATH/payment.addr) --testnet-magic $NETWORK_MAGIC${NC}\n
            
 EOF

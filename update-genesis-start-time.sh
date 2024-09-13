@@ -34,7 +34,7 @@ EPOCH_LENGTH=`perl -E "say ((10 * $K) / $F)"`
 EPOCH_LENGTH_MINUTES=`perl -E "say (($EPOCH_LENGTH / 60) * $SLOT_LENGTH )"`
 EPOCH_LENGTH_MINUTES_INT=${EPOCH_LENGTH_MINUTES%.*}
 RETURN_ADDRESS=$(cat keys/utxo-keys/utxo1_stk.addr)
-
+echo "Epoch Length in minutes: $EPOCH_LENGTH_MINUTES"
 
 
 # Create keys file
@@ -55,6 +55,7 @@ sed -i "s/\"networkMagic\": [0-9]*/\"networkMagic\": $NETWORK_MAGIC/" "templates
 cp templates/genesis-byron.json $CNODE_HOME/files/byron-genesis.json
 cp templates/genesis-shelley.json $CNODE_HOME/files/shelley-genesis.json
 cp templates/genesis-alonzo.json $CNODE_HOME/files/alonzo-genesis.json
+
 cp templates/conway-genesis.json $CNODE_HOME/files/conway-genesis.json
 
 cp templates/cardano-node.json $CNODE_HOME/files/config.json
