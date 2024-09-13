@@ -39,7 +39,10 @@ The POOL_NAME mentioned in the guild operator env file should match with the POO
 
 
 ```bash
-source {your_environment_file}
+cd ~
+mkdir git; cd git
+git clone https://github.com/Kartiiyer12/cardano-private-network-spinup.git ; cd cardano-private-network-spinup
+source env.sh
 ```
 
 #### Update the genesis files with a new start time:
@@ -93,7 +96,7 @@ cd $CNODE_HOME/scripts
 ## Generate Addresses and fund:
 
 ```bash
-cd scripts
+cd /git/cardano-private-network-spinup/scripts
 ./step1-generate-utxo-keys-and-address.sh
 ```
 
